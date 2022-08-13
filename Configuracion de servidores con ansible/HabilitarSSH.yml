@@ -1,0 +1,13 @@
+---
+- hosts: serverCentosUTU
+  become: yes
+  become_user: root 
+  tasks:
+  - name: Habilitando ssh
+    service:
+      name: sshd
+      state: started
+
+  
+
+      

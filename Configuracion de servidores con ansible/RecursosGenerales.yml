@@ -31,6 +31,12 @@
       disable_gpg_check: yes
       state: latest 
 
+  - name: instalando YAD
+    yum:
+      name: yad
+      update_cache: yes
+      disable_gpg_check: yes
+      state: latest
   
 
       
