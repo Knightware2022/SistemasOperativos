@@ -1,0 +1,13 @@
+---
+- hosts: serverCentosUTU
+  become: yes
+  become_user: root 
+  tasks:
+  - name: instalando YAD
+    yum:
+      name: yad
+      update_cache: yes
+      disable_gpg_check: yes
+      state: latest
+   
+      

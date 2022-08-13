@@ -1,0 +1,9 @@
+---
+- hosts: serverCentosUTU
+  become: yes
+  become_user: root
+  tasks:
+  - name: Levantando
+    service:
+      name: mariadb
+      state: started

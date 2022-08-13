@@ -1,0 +1,21 @@
+---
+- hosts: serverCentosUTU
+  become: yes
+  become_user: root
+  tasks:
+  - name: instalando SQL
+    yum:
+      name: MariaDB-server
+      disable_gpg_check: yes
+      state: latest
+  - name: Instalando python mysql
+    yum:
+       pkg: MySQL-python
+       disable_gpg_check: yes
+       state: latest
+
+  - name: Habilitando e iniciando MariaDB
+    service:
+      name: mariadb
+      state: started
+      enabled: yes

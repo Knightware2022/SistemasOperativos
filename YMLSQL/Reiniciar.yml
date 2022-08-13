@@ -1,0 +1,9 @@
+---
+- hosts: serverCentosUTU
+  become: yes
+  become_user: root
+  tasks:
+  - name: Reiniciando
+    service:
+      name: mariadb
+      state: restarted

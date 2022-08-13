@@ -1,0 +1,9 @@
+---
+- hosts: serverCentosUTU
+  become: yes
+  become_user: root
+  tasks:
+  - name: BajandoSQL
+    service:
+      name: mariadb
+      state: stopped

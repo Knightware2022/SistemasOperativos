@@ -1,0 +1,13 @@
+---
+- hosts: serverCentosUTU
+  become: yes
+  become_user: root 
+  tasks:
+  - name: Bajando apache
+    service:
+      name: httpd
+      state: restarted
+
+  
+
+      
