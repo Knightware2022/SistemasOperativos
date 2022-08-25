@@ -1,3 +1,4 @@
+#!/bin/bash
 salir=0 #si es 1 es salir
 while [ $salir -ne 1 ]
 do

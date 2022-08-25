@@ -1,3 +1,4 @@
+#!/bin/bash
 opcion=$(yad --list \
              --title="SIGRE" \
              --height=250 \
@@ -15,7 +16,7 @@ if [ $ans -eq 0 ]
 then
     case $opcion in
         *Apache*) sh YADapache.sh;;
-	*My_SQL*) sh YADMySQL.sh;;
+	*My*) sh YADMySQL.sh;;
 	*servicio*) sh YADssh.sh;;
 	*Instala*) sh InstalacionMinima.sh;;
 

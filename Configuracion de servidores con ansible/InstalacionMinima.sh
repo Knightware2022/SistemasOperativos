@@ -1,3 +1,4 @@
+#!/bin/bash
 salir=0
 while [ $salir -ne 1 ]
 do

@@ -1,5 +1,5 @@
 ---
-- hosts: serverCentosUTU
+- hosts: servidor_de_pruebas
   become: yes
   become_user: root 
   tasks:
@@ -38,5 +38,8 @@
       disable_gpg_check: yes
       state: latest
   
-
-      
+  - name: instalando nmap
+    yum:
+      name: nmap
+      disable_gpg_check: yes
+      state: latest
