@@ -15,7 +15,7 @@ BajarConexion(){
 	nmcli device status|grep ens33 | awk '{print $3}' # informo estado de tarjeta  de red	
 	}
 
-Ssh(){
+Ssh(){#ssh
 	sudo systemctl status sshd | awk 'NR==3{print $2}' #informo estado sel servicio SSH
      }
 ConectarSsh(){
