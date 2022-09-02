@@ -1,69 +1,77 @@
 
 #!/bin/bash
 
+VerPing(){
+
+	ping -c 4 8.8.8.8 | yad --list --center --title "Knightwarenetool2" --width=500  --height=400  --text "VER ESTADO DE CONEXION" --column "CON ISP"   --no-buttons
+
+}
+
 
 VerConexion(){
-	nmcli device status|grep ens33 | awk '{print $3}'|cowsay # aclaracion ens33 es MI tarjeta de red
+	nmcli device status|grep ens33 | awk '{print $2"  " $3}'| yad --list --center --title "Knightwarenetool2" --width=200  --height=150  --text "VER ESTADO DE CONEXION" --column " DEL SERVIDOR"   --no-buttons # aclaracion ens33 es MI tarjeta de red
 } # con el comando nmcli podemos ver la tarjeta de red, cambiaremos ens33 por el nombre que nos corresponda
 
 LevantarConexion(){
 	 ifup ens33 # levanto tarjeta de red
-	nmcli device status|grep ens33 | awk '{print $3}'|cowsay # informo el estado de la tarjeta de red	
+	nmcli device status|grep ens33 | awk '{print $2"  " $3}'| yad --list --center --title "Knightwarenetool2" --width=200  --height=150  --text "LEVANTANDO CONEXION" --column " DEL SERVIDOR"   --no-buttons # informo el estado de la tarjeta de red	
 }
 
 BajarConexion(){
 	 ifdown ens33 # bajo tarjeta de red
-	nmcli device status|grep ens33 | awk '{print $3}'|cowsay # informo estado de tarjeta  de red	
+	nmcli device status|grep ens33 | awk '{print $2"  " $3}' | yad --list --center --title "Knightwarenetool2" --width=200  --height=150  --text "BAJANDO CONEXION" --column " DEL SERVIDOR"   --no-buttons # informo estado de tarjeta  de red	
 }
 
 Ssh(){
-	 systemctl status sshd | awk 'NR==3{print $2}'|cowsay #informo estado sel servicio SSH
+	 systemctl status sshd | awk 'NR==3{print $2"  "$3"  "$4"  "$5"  "$6"  "$7}'| yad --list --center --title "Knightwarenetool2" --width=400  --height=200  --text "ESTADO " --column " SSH"   --no-buttons #informo estado sel servicio SSH
      }
 ConectarSsh(){
 	 systemctl start sshd # levanto SSH
-	 systemctl status sshd | awk 'NR==3{print $2}'|cowsay # informo estado de SSH
+	 systemctl status sshd | awk 'NR==3{print $2"  "$3"  "$4"  "$5"  "$6"  "$7}'| yad --list --center --title "Knightwarenetool2" --width=400  --height=200  --text "CONECTANDO " --column " SSH"   --no-buttons # informo estado de SSH
 }
 
 
 DesconectarSsh(){
 	 systemctl stop sshd # detengo servicio SSH
-	 systemctl status sshd | awk 'NR==3{print $2}'|cowsay # muestro servicio SSH	
+	 systemctl status sshd | awk 'NR==3{print $2"  "$3"  "$4"  "$5"  "$6"  "$7}'| yad --list --center --title "Knightwarenetool2" --width=400  --height=200  --text "DESCONECTANDO " --column " SSH"   --no-buttons # Bajo servicio SSH	
 }
 
 Mysql(){
-	 systemctl status mariadb | awk 'NR==3{print $2}'|cowsay # muestro servicio MySQL el cual esta ligado a mariadb
+	 systemctl status mariadb | awk 'NR==3{print $2"  "$3"  "$4"  "$5"  "$6"  "$7}'| yad --list --center --title "Knightwarenetool2" --width=400  --height=200  --text "VER ESTADO " --column " MySQL"   --no-buttons # muestro servicio MySQL el cual esta ligado a mariadb
 }
 ConectarMysql(){
 	 systemctl start mariadb # detengo el MySQL server
-	 systemctl status mariadb | awk 'NR==3{print $2}'|cowsay # informo el estado del server MySQL
+	 systemctl status mariadb | awk 'NR==3{print $2"  "$3"  "$4"  "$5"  "$6"  "$7}'| yad --list --center --title "Knightwarenetool2" --width=400  --height=200  --text "CONECTANDO" --column " MySQL"   --no-buttons # informo el estado del server MySQL
 }
 
 
 DesconectarMysql(){
 	 systemctl stop mariadb # detengo el MySQL server
-	 systemctl status mariadb | awk 'NR==3{print $2}'|cowsay # informo el estado del server MySQL
+	 systemctl status mariadb | awk 'NR==3{print $2"  "$3"  "$4"  "$5"  "$6"  "$7}'| yad --list --center --title "Knightwarenetool2" --width=400  --height=200  --text "DESCONECTANDO" --column " MySQL"   --no-buttons # informo el estado del server MySQL
 	}
 
 
 Apache(){
-	  systemctl status httpd | awk 'NR==3{print $2}'| cowsay # muestro estado sel servicio de APACHE
+	  systemctl status httpd | awk 'NR==3{print $2"  "$3"  "$4"  "$5"  "$6"  "$7}'| yad --list --center --title "Knightwarenetool2" --width=400  --height=200  --text "VER ESTADO" --column " APACHE"   --no-buttons # muestro estado sel servicio de APACHE
 	}
 ConectarApache(){
 	 systemctl start httpd # levanto APACHE
-	 systemctl status httpd | awk 'NR==3{print $2}'| cowsay # informo el estado del server APACHE
+	 systemctl status httpd | awk 'NR==3{print $2"  "$3"  "$4"  "$5"  "$6"  "$7}'| yad --list --center --title "Knightwarenetool2" --width=400  --height=200  --text "CONECTANDO" --column " APACHE"   --no-buttons # informo el estado del server APACHE
 }
 
 DesconectarApache(){
 	 systemctl stop httpd # desconecto apache
-	 systemctl status httpd | awk 'NR==3{print $2}'| cowsay # informo el estado del server APACHE
+	 systemctl status httpd | awk 'NR==3{print $2"  "$3"  "$4"  "$5"  "$6"  "$7}'| yad --list --center --title "Knightwarenetool2" --width=400  --height=200  --text "DESCONECTAR" --column " APACHE"   --no-buttons # informo el estado del server APACHE
 }
 
 InspeccionarRed(){
-	netstat -punta | yad --list --center --title "Knightwarenetool2" --width=600  --height=600  --text "LISTA DE" --column "    PROCESOS ACTIVOS"   --no-buttons
+	netstat -punta | awk '{print $2"  "$3"  "$4"  "$5"  "$6}'| yad --list --center --title "Knightwarenetool2" --width=400  --height=600  --text "AUDITAR" --column " RED"   --no-buttons
+	#consulto estado de la red
 }
 
 InspeccionarPuertoslocalhost(){
-nmap 'localhost' | yad --list --center --title "Knightwarenetool2" --width=600  --height=600  --text "LISTA DE" --column "    PROCESOS ACTIVOS"   --no-buttons
+nmap 'localhost' | awk '{print $1"  "$2"  "$3}'| yad --list --center --title "Knightwarenetool2" --width=400  --height=400  --text "AUDITAR PUERTOS" --column "DEL SERVIDOR"   --no-buttons
+	# nmap sobre localhost
 }
 AuditarPuertoX(){
 puerto=$(yad --entry \
@@ -78,7 +86,7 @@ puerto=$(yad --entry \
 if [ $ans -eq 0 ]
 then
 
-	nmap -p $puerto 'localhost'| yad --list --center --title "Knightwarenetool2" --width=600  --height=600  --text "ESCANEANDO PUERTOS" --column " DEL SERVIDOR"   --no-buttons
+	nmap -p $puerto 'localhost'| awk '{print $1"  "$2"  "$3}'| yad --list --center --title "Knightwarenetool2" --width=400  --height=600  --text "AUDITAR" --column " PUERTO"   --no-buttons
 else
 
 yad --title="Knightnetool2" \
@@ -93,7 +101,7 @@ fi
 }
 
 ListarProcesos (){
-ps | yad --list --center --title "Knightwarenetool2" --width=600  --height=600  --text "LISTA DE" --column "    PROCESOS ACTIVOS"   --no-buttons
+ps | yad --list --center --title "Knightwarenetool2" --width=400  --height=600  --text "LISTA DE" --column "    PROCESOS ACTIVOS"   --no-buttons
 }
 
 TrazarRuta(){
@@ -194,7 +202,7 @@ ans=$?
 if [ $ans -eq 0 ]
 then
     case $opcion in
-        *PI*) ping -c 4 8.8.8.8;;
+        *PI*) VerPing;;
 	*VER_CON*) VerConexion;;
 	*TAR_CON*) LevantarConexion;;
 	*JAR_CON*) BajarConexion;;
@@ -213,7 +221,6 @@ then
     esac
 
 else
-	salir=1
 	salirC=1
 	yad --title="Knightnetool2" \
     		   --center \
@@ -265,7 +272,6 @@ then
     esac
 
 else
-	salir=1
 	salirS=1
 	yad --title="Knightnetool2" \
     		   --center \
@@ -317,7 +323,6 @@ then
     esac
 
 else
-	salir=1
 	salirM=1
 	yad --title="Knightnetool2" \
     		   --center \
@@ -370,7 +375,6 @@ then
     esac
 
 else
-	salir=1
 	salirA=1
 	yad --title="Knightnetool2" \
     		   --center \
@@ -425,7 +429,6 @@ then
     esac
 
 else
-	salir=1
 	salirAv=1
 	yad --title="Knightnetool2" \
     		   --center \
