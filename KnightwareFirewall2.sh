@@ -137,7 +137,7 @@ then
 	*ver_equ*) VolverAequipoNormal;;
 	*ear_PI*) BloquearPing;;
 	*tir_ing*) PermitirIngreso;;	
-	*SAL*) (yad --title="Creador de SISRDadmin" \
+	*SAL*) (yad --title="KnightwareFirewall" \
     		    --center \
     	        --width=300 \
     	        --timeout=2 \
