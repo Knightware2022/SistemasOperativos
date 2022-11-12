@@ -1,0 +1,19 @@
+---
+- hosts: serverCentosUTU
+  become: yes
+  become_user: root 
+  tasks:
+    - name: Creando carpets de destino backup de MySQL
+      file:
+        path: /etc/prueba
+        state: directory
+        owner: root 
+        group: mysq1l 
+        mode: 0774
+
+    - name: Respaldando base de datos
+      mysql_db: 
+        state: dump
+        name: all
+        target: '/etc/prueba/{{ inventory_hostname }}-{{ ansible_date_time.date }}-{{ ansible_date_time.time }}.sql'
+
